@@ -1,0 +1,6 @@
+numpy==1.16.2       # should now work for all robots * (previously: 1.21.6)
+paho-mqtt==2.1.0
+pyyaml==3.13
+typing_extensions==4.7.1
+#matplotlib==3.5.3
+#setuptools==40.8.0

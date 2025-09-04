@@ -1,0 +1,51 @@
+{
+# Communication:
+'broker': '192.168.178.56',
+'port': 1883, # standard MQTT port
+
+# Static shape ids:
+# 1   - double_7x7
+# 2   - t_8x8
+# 3   - arrow_16x16
+# 4   - cross_32x32
+# 5   - donut_32x32
+# 6   - star_32x32
+# 7   - r_32x32
+# 8   - o_32x32
+# 9   - b_32x32
+# 10  - snowflake_128x128
+# 11  - triangle_128x128
+
+# Custom (dynamic) shape labels:
+# "switch_rob_center"
+# "switch_rob_horizontal"
+
+# Shape:
+'shape': 2,      # int (-> static) | str (-> custom (dynamic))
+
+# Robots:
+'my_id': '3',     # Note: Gets overwritten by id arg when calling setup.py
+'ids': ['3', '5', '7', '14', '21', '25', '35', '38'], # (!) including my_id
+'r_sense': 0.30,            # sensing radius in m
+'r_avoid': 0.20,            # collision avaidance distance between robot centers
+'cell_scaling': 1.0,        # factor to scale the automatically determined cell length
+
+# Environment:
+'arena_x': [0.5, 1.5],      # min-max arena measure along x-axis
+'arena_y': [0.0, 1.0],      # min-max arena measure along y-axis
+'dt': 0.2,                  # time step in seconds
+# *Note: Real world arena frame origin is at top-left corner (e.g. 2 x 1 m)
+
+# Control:
+'k1': 10.0,                 # v_enter: constant gain
+'sigma1': 10.0,             # v_explore (all cells): border shape
+'sigma2': 20.0,             # v_explore (unoccupied): inside shape
+'k3': 25.0,                 # v_interact: gain for collision avoidance
+'avoid_obstacles': False,   # uses proximity sensor for obstacle avoidance
+'stop_threshold': 0.0,      # stop if velocity is too small (e.g. 0.25)
+'led': "state",             # "off" | "state" | "position" | "velocity"
+
+# MISC:
+'r_robot': 0.035,           # epuck radius in m
+'seed': 3,
+}

@@ -1,0 +1,60 @@
+{
+# Communication:
+'broker': 'localhost',
+'port': 1883, # standard MQTT port
+
+# Static shape ids:
+# 1   - double_7x7
+# 2   - t_8x8
+# 3   - arrow_16x16
+# 4   - cross_32x32
+# 5   - donut_32x32
+# 6   - star_32x32
+# 7   - r_32x32
+# 8   - o_32x32
+# 9   - b_32x32
+# 10  - snowflake_128x128
+# 11  - triangle_128x128
+# -> add new to io/shapes via: python3 shape_painter2.py
+
+# Custom (dynamic) shape labels:
+# "switch_rob_center"
+# "switch_rob_horizontal"
+# "lr_translation_cross"
+# "example_seq"
+# -> add new in create_dynamic_shape_sequence() of mqtt_server.py
+
+# Shape:
+'shape': 6,     # int (-> static) | str (-> custom (dynamic))
+
+# Robots:
+'swarm_size': 30,           # number of robots induces ids: ['1', '2', ..., '<swarm_size>']
+'r_sense': 0.40,            # sensing radius in m
+'r_avoid': 0.25,            # collision avaidance distance between robot centers
+'cell_scaling': 0.9,        # factor to scale the automatically determined cell length
+
+# Environment:
+'arena_x': [-1.2, 1.2],     # min-max arena measure in m along x-axis *
+'arena_y': [-1.2, 1.2],     # min-max arena measure in m along y-axis *
+'init_pos': "world",       # "world" | "random" | "uniform" | "block" | "line" | "circle"
+'init_margin': 0.15,        # margin to arena boundary in m (for block: spacing between robots; for circle: radius)
+'init_center': [0.0, 0.0],  # center if init_pos is "block", "circle", or "line" (takes only y component)
+'dt': 0.15,                 # time step in seconds (use null for webots default 0.036)
+# *Note: Webots frame origin is in the center of the arena
+
+# Control:
+'k1': 20.0,                 # v_enter: constant gain
+'sigma1': 10.0,             # v_explore (all cells): border shape
+'sigma2': 40.0,             # v_explore (unoccupied): inside shape
+'k3': 35.0,                 # v_interact: gain for collision avoidance
+'motor_speed': 6.28,        # max motor speed in rad/s (default: 6.28)
+'avoid_obstacles': False,   # uses proximity sensor for obstacle avoidance - NOTE: not compatible with 'show_radius'!
+'stop_threshold': 0.0,      # stop if velocity is too small (e.g. 0.25)
+'led': "off",               # "off" | "state" | "position" | "velocity"
+
+# MISC:
+'r_robot': 0.037,           # epuck radius in m
+'shape_tex': "black",       # "world" | "gray" | "black" | "all_black" | "all_white"
+'show_radius': False,       # visualize sensing radius - NOTE: not compatible with 'avoid_obstacles'!
+'seed': 1,
+}
