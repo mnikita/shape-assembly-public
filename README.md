@@ -38,7 +38,7 @@ The repository contains python code for real Pi-puck robots and simulation using
 
 #### 3. Clone repository (e.g. via HTTPS):
 
-    git clone https://github.com/mnikita/shape-assembly.git
+    git clone https://github.com/mnikita/shape-assembly-public.git
     cd shape-assembly
 
 #### 4. Install packages via requirements.txt:
